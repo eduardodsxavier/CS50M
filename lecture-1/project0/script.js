@@ -18,17 +18,19 @@ function newTodo() {
     }
 
     const todo = document.createElement("li")
-    const checkbox = document.createElement("input")
+    const checkBox = document.createElement("input")
     const label = document.createElement('label')
 
     label.innerHTML = pro
-    label.setAttribute("for", checkbox)
     label.classList.add(classNames.TODO_TEXT)
+    label.setAttribute("for", checkBox)
 
-    checkbox.type = "checkbox"
-    checkbox.classList.add(classNames.TODO_CHECKBOX)
+    checkBox.type = "checkbox"
+    checkBox.classList.add(classNames.TODO_CHECKBOX)
+    checkBox.setAttribute("onclick", "updateUncheckedCount(this)")
 
-    todo.appendChild(checkbox)
+    todo.id = itemCountSpan
+    todo.appendChild(checkBox)
     todo.appendChild(label)
     todo.classList.add(classNames.TODO_ITEM)
 
@@ -37,4 +39,13 @@ function newTodo() {
   // add one to itemCountSpan
     itemCountSpan.innerHTML++
     uncheckedCountSpan.innerHTML++
+}
+
+function updateUncheckedCount(checkBox) {
+    if (checkBox.checked){
+        uncheckedCountSpan.innerHTML--
+    }
+    else {
+        uncheckedCountSpan.innerHTML++
+    }
 }

@@ -11,27 +11,33 @@ const uncheckedCountSpan = document.getElementById('unchecked-count')
 
 function newTodo() {
   // add a new todo in the todo-list
-    const pro = prompt("todo name")
+    const todoName = prompt("todo name")
  
-    if (!pro) {
+    if (!todoName) {
         return
     }
 
     const todo = document.createElement("li")
     const checkBox = document.createElement("input")
-    const label = document.createElement('label')
+    const label = document.createElement("label")
+    const button = document.createElement("button")
 
-    label.innerHTML = pro
+    label.innerHTML = todoName
     label.classList.add(classNames.TODO_TEXT)
     label.setAttribute("for", checkBox)
 
     checkBox.type = "checkbox"
     checkBox.classList.add(classNames.TODO_CHECKBOX)
+    checkBox.id = "checkBox"
     checkBox.setAttribute("onclick", "updateUncheckedCount(this)")
 
-    todo.id = itemCountSpan
+    button.innerHTML = "X"
+    button.classList.add(classNames.TODO_DELETE)
+    button.setAttribute("onclick", "deleteTodo(this)")
+
     todo.appendChild(checkBox)
     todo.appendChild(label)
+    todo.appendChild(button)
     todo.classList.add(classNames.TODO_ITEM)
 
     list.appendChild(todo)
@@ -48,4 +54,15 @@ function updateUncheckedCount(checkBox) {
     else {
         uncheckedCountSpan.innerHTML++
     }
+}
+
+function deleteTodo(checkBox) { 
+    if (!checkBox.parentNode.querySelector("input").checked) {
+        uncheckedCountSpan.innerHTML--
+    }
+
+    itemCountSpan.innerHTML--
+
+    checkBox.parentNode.remove()
+
 }

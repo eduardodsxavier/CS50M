@@ -28,7 +28,6 @@ function newTodo() {
 
     checkBox.type = "checkbox"
     checkBox.classList.add(classNames.TODO_CHECKBOX)
-    checkBox.id = "checkBox"
     checkBox.setAttribute("onclick", "updateUncheckedCount(this)")
 
     button.innerHTML = "X"

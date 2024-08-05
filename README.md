@@ -2,6 +2,7 @@
 
 **important**
 i am actualy studing this, so this repository is not complete.
+project-1 is in the pomodoro-app repository
 
 **Overview:**
 This repository serves as a comprehensive resource for the CS50M course, a mobile development course offered by Harvard University's CS50.
